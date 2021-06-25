@@ -23,6 +23,6 @@ int main( int argc, char **argv){
  return 0;
 }
 
-int yyrap(){
+int yyrwap(){
  return 1;
 }

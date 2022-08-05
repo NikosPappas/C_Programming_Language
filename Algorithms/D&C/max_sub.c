@@ -3,6 +3,8 @@
 
 int max_sub(int *,int,int);
 int mid_sub(int *,int,int,int);
+int max(int,int);
+int max_three(int,int,int);
 
 int main(int argc,char *argv[]){
 	int a[]={13,-3,-25,20,-3,-16,-23,18,20,-7,12,-5,-22,15,-4,7};

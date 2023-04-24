@@ -16,6 +16,7 @@ void insert_last(SL **,int);
 void remove_first(SL **);
 void remove_last(SL **);
 bool isEmpty(SL **);
+void reverse_list(SL **);
 int main(void){
         SL *t=NULL;
 	append(&t,10);
@@ -36,6 +37,18 @@ int main(void){
 	print(t);
 	freeList(t);
 	return 0;
+}
+void reverse_list(SL **l){
+	SL *prev=NULL;
+	SL *cur=*l;
+	SL *next=NULL;
+	while(cur!=NULL){
+		next=cur->next;
+		cur->next=prev;
+		prev=cur;
+		cur=next;
+	}
+	*l=prev;
 }
 bool isEmpty(SL **top){
 	return *top==NULL;

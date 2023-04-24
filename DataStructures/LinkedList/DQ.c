@@ -35,6 +35,8 @@ int main(void){
 	printf("Removing last element...\n");
 	remove_last(&t);
 	print(t);
+	reverse_list(&t);
+	print(t);
 	freeList(t);
 	return 0;
 }

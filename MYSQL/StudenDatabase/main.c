@@ -83,9 +83,14 @@ int main(void){
      listAllInstructors(conn);
      printf("===================\n");
      listAllCourses(conn);
+    //I have my own records in the database
+    //the following commands will delete the record in student 
+    //table 
      temp.studentId=314;
      deleteStudent(conn,&temp);
+    //list all students
      listAllStudents(conn);
+    //show student info with course title and grade
      showStudentWithGrades(conn);
      mysql_close(conn);
      return 0;
@@ -353,4 +358,6 @@ void insertSudentInf(MYSQL *conn,Student *s){
     printf("Student inserted successfully.\n");
     mysql_stmt_close(stmt);
 }
+/*Anyone can use the code*/
+
 

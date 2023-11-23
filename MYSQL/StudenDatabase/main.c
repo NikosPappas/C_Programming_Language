@@ -52,7 +52,7 @@ void listAllStudents(MYSQL *);//done
 void showStudentWithGrades(MYSQL *);//done
 int main(void){
       const char *user="root";
-      const char *password="n1k0l2s!@";
+      const char *password="r00t`";
       const char *db="StudentManagement";
       const char *host="localhost";
       MYSQL *conn=NULL;

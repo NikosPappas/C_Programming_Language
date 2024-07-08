@@ -44,54 +44,53 @@ void inorder(node *t){
 	}
 }
 node *delete_node(node *t,int d){
-	if(t==NULL){
+	if(root==NULL){
 		return NULL;
 	}
-	else if(d<t->data){
-		t->left=delete_node(t->left,d);
+	else if(d<root->data){
+		root->left=deleteNode(root->left,d);
 	}
-	else if(d>t->data){
-		t->right=delete_node(t->right,d);
+	else if(d>root->data){
+		root->right=deleteNode(root->right,d);
 	}
 	else{
-		if(t->left==NULL){
-			node *temp=t->right;
-			free(t);
+		if(root->left==NULL){
+			node *temp=root->right;
+			free(root);
 			return temp;
 		}
-		if(t->right==NULL){
-			node *temp=t->left;
-			free(t);
+		else if(root->right==NULL){
+			node *temp=root->left;
+			free(root);
 			return temp;
 		}
-		node *temp=min_node(t->right);
-		t->data=temp->data;
-		t->right=delete_node(t->right,temp->data);
+		else{
+			node *c=minValue(root->right);
+			root->data=c->data;
+			root->right=deleteNode(root->right,d);
+		}
 	}
-	t->height=max(height(t->left),height(t->right))+1;
-	int balance=get_balance(t);
-
+	root->height=max(getHeight(root->left),getHeight(root->right))+1;
+	int balance=getBalance(root);
 	if(balance>1){
-		if(get_balance(t->left)>=0){
-			return right_rotate(t);
+		if(getBalance(root->left)>=0){
+			return rightRotate(root);
 		}
-		if(get_balance(t->left)<0){
-			t->left=left_rotate(t->left);
-			return right_rotate(t);
+		if(getBalance(root->left)<0){
+			root->left=leftRotate(root->left);
+			return rightRotate(root);
 		}
 	}
 	if(balance<-1){
-		if(get_balance(t->right)<=0){
-			return left_rotate(t);
+		if(getBalance(root->right)<=0){
+			return leftRotate(root);
 		}
-		if(get_balance(t->right)>0){
-			t->right=right_rotate(t->right);
-			return left_rotate(t);
+		if(getBalance(root->right)>0){
+			root->right=rightRotate(root->right);
+			return leftRotate(root);
 		}
 	}
-
-
-	return t;
+	return root;
 }	
 node *min_node(node *t){
 	node *c=t;
